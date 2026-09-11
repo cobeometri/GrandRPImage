@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EventTimer · Kiểm tra icon</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#081017;color:#eff5f8;font:14px/1.5 'Segoe UI',sans-serif}main{max-width:1380px;margin:auto;padding:28px 32px}header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}h1{margin:0;font-size:27px;line-height:1.2;letter-spacing:-.6px}h2{margin:0;font-size:16px}p{margin:7px 0 0;color:#a6b5c1}.eyebrow{color:#70d7c2;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px}.actions{display:flex;gap:8px;flex-shrink:0}button{background:#1c2c37;border:1px solid #3c505f;border-radius:8px;padding:10px 13px;color:inherit;font:inherit;cursor:pointer}button:hover{background:#2a3c49}button:focus-visible{outline:2px solid #70d7c2;outline-offset:3px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:26px}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}.muted{color:#90a4b4;font-size:12px}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:#111e28;border:1px solid #243743;border-radius:12px;padding:14px 10px 12px;overflow:hidden}.art{display:flex;align-items:center;justify-content:center;height:144px;border-radius:8px;background:#081017}.art img{width:128px;height:128px;object-fit:contain}.card h3{font-size:13px;line-height:1.4;margin:12px 0 4px;min-height:36px}.filename{font-size:10px;color:#8fa5b5;overflow-wrap:anywhere}.meta{font-size:10px;color:#66c9ae;margin-top:6px}.hud-stage{background:linear-gradient(140deg,#294759,#13252f);border:1px solid #335161;border-radius:12px;padding:18px;min-height:444px;overflow:hidden}.readout{margin-top:14px;padding:14px;background:#111e28;border:1px solid #243743;border-radius:10px;color:#a6b5c1;font-size:12px}.readout strong{color:#76dbb3}.footnote{font-size:12px;color:#8399a9;margin-top:22px}.light .art{background:#edf1f4}.light .hud-stage{background:linear-gradient(140deg,#d8e5df,#a4bdb0)}.light button[data-theme]{border-color:#70d7c2}.status-error{color:#ff9595!important}@media(max-width:1180px){.workspace{grid-template-columns:1fr}.hud-stage{max-width:540px}.hud-panel{display:grid;grid-template-columns:minmax(0,540px) minmax(200px,1fr);gap:16px}.hud-panel .section-head{grid-column:1/-1;margin-bottom:-4px}.hud-panel .readout{margin-top:0;align-self:start}}@media(max-width:720px){main{padding:22px 16px}header{align-items:flex-start;flex-direction:column;gap:16px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.hud-panel{display:block}.hud-panel .section-head{margin-bottom:12px}.hud-panel .readout{margin-top:14px}.hud-stage{padding:12px}.art{height:140px}.card{padding:10px 8px}.card h3{min-height:20px}h1{font-size:24px}}
+.event-time-widget{display:flex;flex-direction:column;gap:8px;pointer-events:none;font-family:'Gilroy','Segoe UI',Tahoma,sans-serif;min-width:0}
+.cet-pill{position:relative;display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;background:var(--cet-bg,rgba(10,10,15,.62));box-shadow:inset 0 0 0 1px var(--cet-frame-ring,rgba(255,255,255,.08)),0 6px 18px rgba(0,0,0,.45);color:var(--cet-text,#fff);min-height:38px;width:max-content;min-width:240px}
+.cet-pill .cet-icon{flex-shrink:0;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--cet-accent,#22c55e);color:#06140a;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.02em;box-shadow:0 0 8px rgba(0,0,0,.35) inset;overflow:hidden}
+.cet-pill .cet-icon img{width:70%;height:70%;object-fit:contain;display:block}
+.cet-pill .cet-icon:has(img){background:transparent !important;box-shadow:none !important;border-radius:0;overflow:visible}
+.cet-pill .cet-icon:has(img) img{width:100%;height:100%}
+.cet-pill .cet-label{flex:1;font-size:14px;font-weight:600;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.55);color:var(--cet-text,#fff)}
+.cet-pill .cet-time{flex-shrink:0;font-family:'Orbitron','Gilroy',monospace;font-variant-numeric:tabular-nums;font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--cet-accent,#22c55e);text-shadow:0 0 6px color-mix(in srgb,var(--cet-accent,#22c55e) 40%,transparent)}
+.cet-pill.cet-expired .cet-time{opacity:.55}
+
+
+.event-time-widget--attached{width:100%;margin-bottom:.5vh}
+.event-time-widget--attached .cet-pill{min-width:0;width:100%}
+
+
+
+
+
+
+.cet-pill--demo{opacity:.7}
+.event-time-widget--has-timers .cet-pill--demo{display:none !important}
+.event-time-widget .cet-pill--demo{display:none}
+.placement-editor-active .event-time-widget .cet-pill--demo,
+.detached-widgets-root .event-time-widget .cet-pill--demo{display:flex}
+
+
+</style>
+</head>
+<body>
+<main>
+<header><div><div class="eyebrow">GrandRP · EventTimer</div><h1>Kiểm tra bộ icon sự kiện</h1><p>8 ảnh PNG · bản gốc 256 × 256 · xem ở 128 px và kích thước HUD 30 px</p></div><div class="actions"><button type="button" data-theme aria-pressed="false">Nền sáng</button><button type="button" data-reset>Đặt lại timer</button></div></header>
+<div class="workspace"><section><div class="section-head"><h2>Chi tiết hình ảnh · 128 px</h2><span class="muted">PNG trong suốt</span></div><div class="gallery" id="gallery"></div></section>
+<section class="hud-panel"><div class="section-head"><h2>HUD thật · icon 30 px</h2><span class="muted">Tỉ lệ 100%</span></div><div class="hud-stage"><div class="event-time-widget event-time-widget--attached"></div></div><div class="readout"><strong id="status">Đang kiểm tra ảnh…</strong><p>Ảnh được tải từ ../images/. Các hàng dùng CSS và trình nhận thông điệp EventTimer hiện tại của codem-supreme-hud.</p><p>Đổi nền để kiểm tra viền trong suốt. Nhãn dài được cắt theo đúng quy tắc HUD.</p></div></section></div>
+<p class="footnote">Bản kiểm tra cục bộ · Font hệ thống thay thế font game · Không kết nối hoặc phát sự kiện vào máy chủ FiveM.</p>
+</main>
+<script>
+(function () {
+  const HOST_SELECTOR = '.event-time-widget';
+  const timers = new Map();        // id -> { id,label,color,icon,iconUrl,sticky,expiresAtUi }
+  let host = null;
+  let tickHandle = null;
+
+  function ensureHost() {
+    if (host && document.body.contains(host)) return host;
+    host = document.querySelector(HOST_SELECTOR);
+    if (host) ensureDemoPill(host);
+    return host;
+  }
+
+  // Inserts a static demo pill as the first child of the host. Mirrors a real
+  // pill (icon + label + time) so the slot looks meaningful in the placement
+  // editor before any timer is added. CSS hides it once .event-time-widget--has-timers
+  // is set, or when the editor isn't open.
+  function ensureDemoPill(h) {
+    if (!h) return;
+    if (h.querySelector('.cet-pill--demo')) return;
+    const demo = document.createElement('div');
+    demo.className = 'cet-pill cet-pill--demo';
+    demo.dataset.id = '__demo__';
+    demo.style.setProperty('--cet-accent', '#22c55e');
+    const icon = document.createElement('div');
+    icon.className = 'cet-icon';
+    icon.textContent = 'E';
+    const label = document.createElement('div');
+    label.className = 'cet-label';
+    label.textContent = 'Event Time';
+    const time = document.createElement('div');
+    time.className = 'cet-time';
+    time.textContent = '00:14:41';
+    demo.append(icon, label, time);
+    h.insertBefore(demo, h.firstChild);
+  }
+
+  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmt(ms) {
+    if (!Number.isFinite(ms) || ms < 0) ms = 0;
+    const t = Math.floor(ms / 1000);
+    return pad2(Math.floor(t / 3600)) + ':' + pad2(Math.floor((t % 3600) / 60)) + ':' + pad2(t % 60);
+  }
+  const cssEscape = (s) => (window.CSS && CSS.escape) ? CSS.escape(s) : String(s).replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+
+  function buildPill(t) {
+    const pill = document.createElement('div');
+    pill.className = 'cet-pill';
+    pill.dataset.id = t.id;
+    if (t.color) pill.style.setProperty('--cet-accent', t.color);
+    const icon = document.createElement('div');
+    icon.className = 'cet-icon';
+    if (t.iconUrl) {
+      const img = document.createElement('img');
+      img.src = t.iconUrl; img.alt = ''; img.draggable = false;
+      icon.appendChild(img);
+    } else {
+      icon.textContent = (t.icon || (t.label || '?')).slice(0, 2);
+    }
+    const label = document.createElement('div');
+    label.className = 'cet-label';
+    label.textContent = t.label || '';
+    const time = document.createElement('div');
+    time.className = 'cet-time';
+    time.textContent = fmt(remainingMs(t));
+    pill.append(icon, label, time);
+    return pill;
+  }
+
+  function remainingMs(t) {
+    return typeof t.expiresAtUi === 'number' ? t.expiresAtUi - Date.now() : 0;
+  }
+
+  function render() {
+    const h = ensureHost();
+    if (!h) return;
+    // Reconcile pill children (preserve insertion order).
+    const desired = Array.from(timers.keys());
+    for (const child of Array.from(h.children)) {
+      if (!child.classList || !child.classList.contains('cet-pill')) continue;
+      if (child.classList.contains('cet-pill--demo')) continue; // never remove the demo
+      if (!timers.has(child.dataset.id)) h.removeChild(child);
+    }
+    desired.forEach((id, idx) => {
+      const t = timers.get(id);
+      let node = h.querySelector('.cet-pill[data-id="' + cssEscape(id) + '"]');
+      if (!node) {
+        node = buildPill(t);
+        h.appendChild(node);
+      } else {
+        if (t.color) node.style.setProperty('--cet-accent', t.color);
+        const labelNode = node.querySelector('.cet-label');
+        if (labelNode && labelNode.textContent !== (t.label || '')) labelNode.textContent = t.label || '';
+        const iconNode = node.querySelector('.cet-icon');
+        if (iconNode) {
+          if (t.iconUrl) {
+            let img = iconNode.querySelector('img');
+            if (!img) { iconNode.textContent = ''; img = document.createElement('img'); img.alt = ''; img.draggable = false; iconNode.appendChild(img); }
+            if (img.getAttribute('src') !== t.iconUrl) img.setAttribute('src', t.iconUrl);
+          } else {
+            if (iconNode.querySelector('img')) iconNode.innerHTML = '';
+            const want = (t.icon || (t.label || '?')).slice(0, 2);
+            if (iconNode.textContent !== want) iconNode.textContent = want;
+          }
+        }
+      }
+      if (h.children[idx] !== node) h.insertBefore(node, h.children[idx] || null);
+    });
+    // Toggle a class so CSS can hide the empty host when no timers.
+    h.classList.toggle('event-time-widget--has-timers', timers.size > 0);
+    scheduleTick();
+  }
+
+  function tick() {
+    tickHandle = null;
+    if (timers.size === 0) return;
+    const h = ensureHost();
+    if (!h) { scheduleTick(); return; }
+    const drop = [];
+    timers.forEach((t) => {
+      const ms = remainingMs(t);
+      const node = h.querySelector('.cet-pill[data-id="' + cssEscape(t.id) + '"]');
+      if (!node) return;
+      const timeNode = node.querySelector('.cet-time');
+      if (timeNode) timeNode.textContent = fmt(ms);
+      if (ms <= 0) {
+        node.classList.add('cet-expired');
+        if (!t.sticky) drop.push(t.id);
+      }
+    });
+    drop.forEach((id) => timers.delete(id));
+    if (drop.length > 0) render();
+    scheduleTick();
+  }
+  function scheduleTick() {
+    if (tickHandle != null) return;
+    tickHandle = setTimeout(tick, 250);
+  }
+
+  function addTimer(p) {
+    if (!p || !p.id) return;
+    const recvAt = Date.now();
+    let expiresAtUi;
+    if (typeof p.expiresAt === 'number' && p.expiresAt > 0) expiresAtUi = p.expiresAt;
+    else if (typeof p.durationMs === 'number') expiresAtUi = recvAt + p.durationMs;
+    else expiresAtUi = recvAt;
+    timers.set(p.id, Object.assign({}, p, { expiresAtUi }));
+    render();
+  }
+  function removeTimer(id) {
+    if (id && timers.delete(id)) render();
+  }
+  function clearTimers() {
+    if (timers.size > 0) { timers.clear(); render(); }
+  }
+
+  setInterval(() => {
+    ensureHost();
+    if (timers.size > 0) render();
+  }, 500);
+
+  window.addEventListener('message', function (e) {
+    const msg = e.data || {};
+    switch (msg.action) {
+      case 'addEventTimer': addTimer(msg.data || msg); break;
+      case 'removeEventTimer': { const d = msg.data || msg; removeTimer(d && d.id); break; }
+      case 'clearEventTimers': clearTimers(); break;
+    }
+  });
+
+  window.__addTimer = addTimer;
+  window.__removeTimer = removeTimer;
+  window.__clearTimers = clearTimers;
+})();
+</script>
+<script>
+const items=[{"file": "parkour", "label": "Parkour", "color": "#ff5c5c"}, {"file": "map-ic-mining", "label": "Đào đá", "color": "#ffcc4d"}, {"file": "map-ic-wood", "label": "Đốn gỗ", "color": "#d79b51"}, {"file": "map-ic-farming", "label": "Nông trại", "color": "#7bd269"}, {"file": "map-ic-garbage", "label": "Dọn rác", "color": "#42ce9b"}, {"file": "map-ic-fishing", "label": "Câu cá", "color": "#61b8ff"}, {"file": "map-ic-bus", "label": "Tài xế xe buýt", "color": "#ffc849"}, {"file": "rental-abandon-warning", "label": "Phương Tiện Thuê Sẽ Bị Xoá Sau", "color": "#ff3b30"}];
+const gallery=document.getElementById('gallery');
+for(const item of items){
+    const card=document.createElement('article');card.className='card';
+    const art=document.createElement('div');art.className='art';
+    const img=document.createElement('img');img.src='../images/'+item.file+'.png';img.alt=item.label;img.width=128;img.height=128;
+    art.append(img);
+    const label=document.createElement('h3');label.textContent=item.label;
+    const file=document.createElement('div');file.className='filename';file.textContent=item.file+'.png';
+    const meta=document.createElement('div');meta.className='meta';meta.textContent='Đang tải…';
+    img.addEventListener('load',()=>{meta.textContent=img.naturalWidth+' × '+img.naturalHeight+' · PNG';refreshStatus()});
+    img.addEventListener('error',()=>{meta.textContent='Không tải được ảnh';meta.classList.add('status-error');refreshStatus()});
+    card.append(art,label,file,meta);gallery.append(card);
+}
+function dispatchTimers(){
+    window.dispatchEvent(new MessageEvent('message',{data:{action:'clearEventTimers',data:{}}}));
+    for(let i=0;i<items.length;i++){
+        const item=items[i];
+        window.dispatchEvent(new MessageEvent('message',{data:{action:'addEventTimer',data:{id:item.file,label:item.label,color:item.color,iconUrl:'../images/'+item.file+'.png',durationMs:(i===7?60:881+i*180)*1000,sticky:true}}}));
+    }
+    refreshStatus();
+}
+function refreshStatus(){
+    const imgs=Array.from(document.querySelectorAll('.gallery img,.cet-icon img'));
+    const loaded=imgs.filter(img=>img.complete&&img.naturalWidth>0).length;
+    const failed=imgs.filter(img=>img.complete&&img.naturalWidth===0).length;
+    const status=document.getElementById('status');
+    status.textContent=loaded+'/'+imgs.length+' ảnh tải thành công'+(failed?' · '+failed+' ảnh lỗi':'');
+    status.classList.toggle('status-error',failed>0);
+    window.assetAudit={loaded,total:imgs.length,failed,files:imgs.map(img=>({src:img.getAttribute('src'),width:img.naturalWidth,height:img.naturalHeight,loaded:img.complete&&img.naturalWidth>0}))};
+}
+document.addEventListener('load',event=>{if(event.target instanceof HTMLImageElement)refreshStatus()},true);
+document.addEventListener('error',event=>{if(event.target instanceof HTMLImageElement)refreshStatus()},true);
+document.querySelector('[data-reset]').addEventListener('click',dispatchTimers);
+document.querySelector('[data-theme]').addEventListener('click',event=>{const enabled=document.body.classList.toggle('light');event.currentTarget.textContent=enabled?'Nền tối':'Nền sáng';event.currentTarget.setAttribute('aria-pressed',String(enabled))});
+dispatchTimers();
+</script>
+</body>
+</html>

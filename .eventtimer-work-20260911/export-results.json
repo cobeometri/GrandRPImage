@@ -1,0 +1,82 @@
+[
+  {
+    "File": "parkour.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 111091,
+    "SHA256": "48BFFB9611C56FC92213CD23A9BEB7D7813749A56B44D6B7B8ACC10FBB19615D"
+  },
+  {
+    "File": "map-ic-mining.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 146475,
+    "SHA256": "6D3814716496422C1E1A760FF35724C459BF95F4C7AF17C242CCB70B653B9371"
+  },
+  {
+    "File": "map-ic-wood.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 135410,
+    "SHA256": "91864C5191153EB4857125CFF51B1AA9D3AB51C3A99948C055832D811EEF869B"
+  },
+  {
+    "File": "map-ic-farming.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 127515,
+    "SHA256": "C09EE8FCAA37714B9972F2AE8B3850FCA4114BF2DE2F28D80DF100075D1A1539"
+  },
+  {
+    "File": "map-ic-garbage.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 134425,
+    "SHA256": "546CDCD12F6C5E0883BB2C7C02026D2ED5F5566D302DB745C3636161298549B0"
+  },
+  {
+    "File": "map-ic-fishing.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 141611,
+    "SHA256": "4E7A7BACB90B38FFB64C6C34D21EEDA825C3DD29A9EB0E3C6A044BA0CF00903D"
+  },
+  {
+    "File": "map-ic-bus.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 138773,
+    "SHA256": "1D3387A493BB4A83B268355973463FCDFB88E60AF2B4EFC369EABCBB83ABD7B9"
+  },
+  {
+    "File": "rental-abandon-warning.png",
+    "OriginalWidth": 1254,
+    "OriginalHeight": 1254,
+    "Width": 256,
+    "Height": 256,
+    "CornerAlpha": 0,
+    "Bytes": 124010,
+    "SHA256": "646506716664D3C9C49CA2C7123EDE877CC18001C4204D96A70670FAD6231A05"
+  }
+]

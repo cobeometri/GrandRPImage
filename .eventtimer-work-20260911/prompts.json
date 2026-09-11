@@ -1,0 +1,47 @@
+{
+  "created": "2026-09-11",
+  "mode": "built-in image_gen",
+  "output": "256x256 transparent PNG; original generated images preserved",
+  "assets": [
+    {
+      "file": "parkour.png",
+      "name": "Parkour",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD event icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular red enamel medallion showing a faceless athletic runner in midair vaulting from one raised obstacle platform to another. Strong simple full-body silhouette, red and white sports clothing, graphite platforms, a small upward step motif. Three-quarter view, dramatic yet clean stylized 3D illustration, crisp silver-white outer rim, deep crimson interior, warm red edge highlights. Subject large and centered inside the badge, broad forms readable when downscaled to 30px, no tiny decorative details. Outer corners completely transparent with preserved alpha. No text, no letters, no numbers, no logos, no watermark, no extra badges. Single finished standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-mining.png",
+      "name": "Mỏ Đá",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion featuring a large steel pickaxe diagonally crossing one rugged gray ore rock with a few bright gold mineral faces. Focus on readable pickaxe and rock silhouette, tactile polished stylized 3D game item art, three-quarter view, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Strong simple broad forms readable at 30px. Icon centered and fills the badge. Outer corners fully transparent alpha. No text, letters, numbers, logos, watermark, extra decorative sparks or unrelated elements. Single finished standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-wood.png",
+      "name": "Đốn Gỗ",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion showing a large forestry axe with bright steel head and warm orange-brown handle embedded into a short cut tree log, visible pale wood end and dark bark. Simple bold unmistakable lumberjack emblem, polished stylized 3D game item illustration, three-quarter view, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Centered subject fills badge, broad forms readable at 30px, no fine clutter. Outer corners fully transparent alpha. No text, letters, numbers, logos, watermark or extra decorative elements. Single standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-farming.png",
+      "name": "Nông Trại",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion showing one large golden wheat head beside a vivid green two-leaf crop sprout rising from a small dark soil mound. Farming and crop harvest immediately recognizable, polished stylized 3D game item illustration, three-quarter view, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Centered, broad bold simple shapes, high contrast, readable at 30px. Outer corners fully transparent alpha. No text, letters, numbers, logos, watermark or unrelated objects. Single finished standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-garbage.png",
+      "name": "Thu Gom Rác",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion featuring one chunky green wheeled refuse bin with closed hinged lid and one compact charcoal trash sack beside it. Refuse collection work instantly recognizable, clean polished stylized 3D game item art, three-quarter view, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Large readable silhouette and broad forms, readable at 30px, no dirt spray or small clutter. Outer corners fully transparent alpha. No text, letters, numbers, recycling glyphs, logos or watermark. Single finished standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-fishing.png",
+      "name": "Câu Cá & Lặn",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion featuring one large curved silver-blue fish leaping in front of a simple diving mask with dark glass lenses, a single cyan wave crest underneath. This resource combines fishing and diving: fish dominates and diving mask is the only secondary element. Polished stylized 3D game item art, three-quarter view, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Centered large broad shapes readable at 30px. Outer corners fully transparent alpha. No text, letters, numbers, logos, watermark, bubbles or small clutter. Single standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "map-ic-bus.png",
+      "name": "Xe Buýt",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD job icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular blue enamel medallion showing one modern city bus in strong front three-quarter view, warm yellow body, broad dark windshield, clearly defined two headlights and bus passenger windows. Polished stylized 3D game vehicle illustration, crisp silver-white outer rim, deep sapphire interior, cyan highlights. Bus fills most of badge, simple chunky instantly recognizable silhouette, readable at 30px. Outer corners fully transparent alpha. No route text, letters, numbers, brand logos, watermark or additional vehicles. Single finished standalone icon, not a sheet or mockup."
+    },
+    {
+      "file": "rental-abandon-warning.png",
+      "name": "Cảnh Báo Xe Thuê",
+      "prompt": "Use case: stylized-concept. Asset type: one polished GrandRP game HUD rental-vehicle abandonment warning icon, square 1024x1024 PNG with genuinely transparent outer background. Create a compact circular crimson red enamel medallion featuring a simple front three-quarter view of a silver compact car with one large amber warning triangle in foreground overlapping the car's lower right corner. Triangle has a crisp dark exclamation mark as its warning symbol, no other text. Make abandoned rental vehicle warning instantly clear. Polished stylized 3D game item illustration, crisp silver-white outer rim, deep crimson interior, warm highlights. Centered broad high-contrast shapes readable at 30px, no scenery or small details. Outer corners fully transparent alpha. No letters, numbers, brands, watermark, additional badges or UI mockup. Single standalone icon."
+    }
+  ]
+}
